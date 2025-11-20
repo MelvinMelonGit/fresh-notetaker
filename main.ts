@@ -1,9 +1,13 @@
 import { App, staticFiles } from "fresh";
 import { define, type State } from "./utils.ts";
+import { PageLayout } from "./components/PageLayout.tsx";
 
 export const app = new App<State>();
 
 app.use(staticFiles());
+
+// global page layout
+app.layout("*", PageLayout);
 
 // Pass a shared value from a middleware
 app.use(async (ctx) => {
